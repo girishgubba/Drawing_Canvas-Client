@@ -1,0 +1,6 @@
+# Ignore Git submodule metadata and submodule working trees
+.gitmodules
+# Ignore any 'modules' directories that may contain submodules
+modules/
+# Ignore nested .git directories inside submodule folders
+*/.git

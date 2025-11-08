@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Realtime Collaborative Canvas</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="appbar">
+      <div class="brand">
+        <span class="logo-dot"></span>
+        <h1>Canvas Live</h1>
+      </div>
+
+      <div id="toolbar" class="toolbar">
+        <div class="tool-group">
+          <label class="control">
+            <span class="icon">🖌️</span>
+            <select id="tool" class="select">
+              <option value="brush">Brush</option>
+              <option value="eraser">Eraser</option>
+            </select>
+          </label>
+
+          <label class="control">
+            <span class="icon">🎨</span>
+            <input type="color" id="color" value="#1f6feb" />
+          </label>
+
+          <label class="control">
+            <span class="icon">📏</span>
+            <input type="range" id="width" min="1" max="40" value="6" />
+          </label>
+        </div>
+
+        <div class="tool-group actions">
+          <button id="undo" class="btn" title="Global undo (Ctrl+Z)">↩ Undo</button>
+          <button id="redo" class="btn" title="Global redo (Ctrl+Y)">↪ Redo</button>
+          <button id="clear" class="btn danger" title="Clear canvas for everyone">🗑 Clear</button>
+        </div>
+
+        <span id="status" class="status-pill">Disconnected</span>
+      </div>
+    </header>
+
+    <!-- App Main Screen -->
+    <main>
+      <aside>
+        <div class="aside-header">
+          <h3>Participants</h3>
+          <span class="badge" id="user-count">0</span>
+        </div>
+        <ul id="users"></ul>
+        <p class="hint">Open multiple tabs to simulate collaboration.</p>
+      </aside>
+
+      <section id="stage">
+        <div id="canvas-container">
+          <canvas id="canvas"></canvas>
+          <canvas id="overlay"></canvas>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <small>Vanilla JS · HTML5 Canvas · Socket.io</small>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="./websocket.js"></script>
+    <script src="./canvas.js"></script>
+    <script src="./main.js"></script>
+  </body>
+</html>
