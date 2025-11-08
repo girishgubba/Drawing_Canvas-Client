@@ -3,7 +3,10 @@
   const urlParams = new URLSearchParams(location.search);
   const roomId = urlParams.get('room') || 'default';
 
-  const socket = io({ transports: ['websocket'] });
+  //The socket.io URL here
+  const BACKEND_URL = "https://drawing-canvas-server.onrender.com";
+
+  const socket = io(BACKEND_URL, { transports: ['websocket'] });
 
   ws.socket = socket;
   ws.roomId = roomId;
